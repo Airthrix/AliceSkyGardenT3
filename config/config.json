@@ -1,0 +1,30 @@
+{
+  "activation_function": "gelu_new",
+  "architectures": [
+    "AliceSkyGardenT3ForCausalLM"
+  ],
+  "auto_map": {
+    "AutoConfig": "configuration_aliceskygarden_t3.AliceSkyGardenT3Config",
+    "AutoModelForCausalLM": "modeling_aliceskygarden_t3.AliceSkyGardenT3ForCausalLM"
+  },
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "hidden_act": "relu2",
+  "hidden_size": 2560,
+  "initializer_range": 0.02,
+  "intermediate_size": 6912,
+  "max_position_embeddings": 4096,
+  "model_type": "aliceskygarden_t3",
+  "num_attention_heads": 20,
+  "num_hidden_layers": 30,
+  "num_key_value_heads": 5,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.52.0",
+  "use_cache": true,
+  "vocab_size": 0
+}
