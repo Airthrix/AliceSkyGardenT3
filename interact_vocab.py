@@ -12,8 +12,8 @@ from safetensors.torch import load_file
 def set_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--device', default='0', type=str, required=False, help='生成设备')
-    parser.add_argument('--temperature', default=1.0, type=float, required=False, help='生成温度，较低的值会使输出更加确定性')
-    parser.add_argument('--topk', default=50, type=int, required=False, help='只保留概率最高的k个token，0表示禁用')
+    parser.add_argument('--temperature', default=0.7, type=float, required=False, help='生成温度，较低的值会使输出更加确定性')
+    parser.add_argument('--topk', default=1, type=int, required=False, help='只保留概率最高的k个token，0表示禁用')
     parser.add_argument('--topp', default=0.0, type=float, required=False, help='累积概率阈值，只保留总概率达到p的token')
     parser.add_argument('--log_path', default='data/interact.log', type=str, required=False, help='interact日志存放位置')
     parser.add_argument('--vocab_path', default='vocab/vocab.json', type=str, required=False, help='选择词库')
@@ -95,7 +95,7 @@ def top_k_top_p_filtering(logits, tokenizer, response, top_k=0, top_p=0.0, filte
 
 def load_safetensors_model(model_path, config):
     model = AliceSkyGardenT3ForCausalLM(config)
-    state_dict_path = os.path.join(model_path, "model.safetensors")
+    state_dict_path = os.path.join(model_path, "compressed_weights.safetensors")
     
     if not os.path.exists(state_dict_path):
         raise FileNotFoundError(f"模型权重文件未找到：{state_dict_path}")
@@ -160,9 +160,25 @@ def main():
         logger.warning(f"警告：词表大小 ({len(tokenizer)}) 与模型配置中的vocab_size ({config.vocab_size}) 不匹配")
     
     # 加载模型
-    model = load_safetensors_model(args.model_path, config)
-    model.to(device)
+    model = AliceSkyGardenT3ForCausalLM(config)
+    logger.info("开始加载压缩模型...")
+    model = model.load_compressed_model(args.model_path, device=device)
+    logger.info("模型加载完成")
+
+    # 验证模型是否在正确设备上
+    logger.info(f"模型当前设备: {next(model.parameters()).device}")
     model.eval()
+
+    # 验证前向传播
+    sample_input = torch.tensor([[tokenizer.cls_token_id]], device=device)
+    with torch.no_grad():
+        output = model(sample_input)
+        logger.info(f"模型验证输出形状: {output.logits.shape}")
+
+
+#    model = load_safetensors_model(args.model_path, config)
+#    model.to(device)
+#    model.eval()
     
     # 初始化对话历史和samples_file
     history = []
@@ -172,7 +188,7 @@ def main():
         samples_file = open(os.path.join(args.save_samples_path, 'samples.txt'), 'a', encoding='utf8')
         samples_file.write(f"聊天记录 {datetime.now()}:\n")
     
-    print('开始和chatbot聊天，输入CTRL + Z以退出')
+    print('开始和AliceSkyGardenT3聊天，请输入')
     
     while True:
         try:
