@@ -20,6 +20,8 @@ from torch.cuda.amp import GradScaler, autocast
 import gc
 from sklearn.model_selection import train_test_split
 from transformers import PreTrainedTokenizerFast
+import psutil
+import threading
 
 # 日志设置
 def create_logger(log_path):
@@ -208,12 +210,17 @@ def train_epoch(model, train_dataloader, optimizer, scheduler, logger, epoch, ar
             labels = labels.to(device, non_blocking=True)
             
             # 前向传播在混合精度作用域内
-            with autocast(enabled=args.use_amp):
-                outputs = model(input_ids, labels=labels)
+            with autocast(enabled=args.use_amp, dtype=torch.bfloat16 if args.use_bf16 else torch.float16):
+                outputs = model(input_ids, labels=labels, global_step=global_step)
                 loss = outputs.loss.mean()
                 # 根据梯度累积步数缩放损失
                 loss = loss / args.gradient_accumulation_steps
             
+
+            # 添加三元稀疏度监控
+            ternary_sparsity = getattr(outputs, "ternary_sparsity", 0.0)  # 获取三元稀疏度
+
+
             # 在autocast作用域外计算准确率（使用float32确保数值稳定性）
             with torch.no_grad():
                 # 只取前n-1个token的logits，用于预测下一个token
@@ -268,7 +275,7 @@ def train_epoch(model, train_dataloader, optimizer, scheduler, logger, epoch, ar
                 
                 logger.info(f"Step {global_step}, batch {batch_idx+1}/{len(train_dataloader)} of epoch {epoch+1}, "
                             f"loss {current_loss:.4f}, acc {batch_acc:.4f}, "
-                            f"LR {current_lr:.10f}")
+                            f"LR {current_lr:.10f}, Ternary Sparsity {ternary_sparsity:.4f}")  # 新增三元稀疏度
             
             # 检查点保存（只在参数更新后保存）
             if (global_step % args.checkpoint_step == 0) and (accumulation_steps == 0):
@@ -330,20 +337,25 @@ def train_epoch(model, train_dataloader, optimizer, scheduler, logger, epoch, ar
 
 
 # 验证epoch
-def validate_epoch(model, validate_dataloader, logger, epoch, args):
+def validate_epoch(model, validate_dataloader, logger, epoch, args, global_step):
     model.eval()
     total_loss = 0
     total_correct = 0  # 新增：累计正确预测数
     total_tokens = 0   # 新增：累计token总数
+    total_sparsity = 0  # 新增：用于累计稀疏度
     
     with torch.no_grad(), autocast(enabled=args.use_amp):
         for batch_idx, (input_ids, labels) in enumerate(validate_dataloader):
             input_ids = input_ids.to(args.device)
             labels = labels.to(args.device)
             
-            outputs = model(input_ids, labels=labels)
+            outputs = model(input_ids, labels=labels, global_step=global_step)
             total_loss += outputs.loss.mean().item()
             
+            # 获取三元稀疏度
+            batch_sparsity = getattr(outputs, "ternary_sparsity", 0.0)
+            total_sparsity += batch_sparsity
+
             # 关键修复：正确处理logits和labels的对应关系
             # 只取前n-1个token的logits，用于预测下一个token
             logits = outputs.logits[:, :-1, :].float()  # 移除最后一个token的logits
@@ -359,7 +371,17 @@ def validate_epoch(model, validate_dataloader, logger, epoch, args):
 
     epoch_mean_loss = total_loss / len(validate_dataloader)
     epoch_acc = total_correct / total_tokens if total_tokens > 0 else 0  # 计算整个验证集的准确率
-    logger.info(f"validate epoch {epoch+1}: loss {epoch_mean_loss:.4f}, acc {epoch_acc:.4f}")
+
+    # 计算平均稀疏度
+    avg_sparsity = total_sparsity / len(validate_dataloader)
+
+    logger.info(f"validate epoch {epoch+1}: loss {epoch_mean_loss:.4f}, acc {epoch_acc:.4f}"
+                     f"Ternary Sparsity {avg_sparsity:.4f}")  # 新增三元稀疏度
+
+    # 清理内存
+    torch.cuda.empty_cache()
+    gc.collect()
+
     return epoch_mean_loss
 
 # 参数解析
@@ -377,8 +399,8 @@ def set_args():
     parser.add_argument('--log_path', default='data/train.log', type=str)
     parser.add_argument('--log', default=True)
     parser.add_argument('--ignore_index', default=-100, type=int)
-    parser.add_argument('--epochs', default=20, type=int)
-    parser.add_argument('--batch_size', default=4, type=int)
+    parser.add_argument('--epochs', default=40, type=int)
+    parser.add_argument('--batch_size', default=8, type=int)
     parser.add_argument('--lr', default=1.0e-5, type=float)
     parser.add_argument('--eps', default=1.0e-09, type=float)
     parser.add_argument('--log_step', default=1, type=int)
@@ -391,10 +413,11 @@ def set_args():
     parser.add_argument('--warmup_steps', type=int, default=2000)
     parser.add_argument('--val_ratio', type=float, default=0.02)
     parser.add_argument('--checkpoint_path', type=str, default='checkpoint.pth')
-    parser.add_argument('--checkpoint_step', type=int, default=1000)
+    parser.add_argument('--checkpoint_step', type=int, default=500)
     parser.add_argument('--resume_checkpoint', type=str, default='')
     parser.add_argument('--optimizer_save_mode', default='minimal', type=str)
     parser.add_argument('--use_amp', action='store_true')
+    parser.add_argument('--use_bf16', action='store_true')
     parser.add_argument('--gradient_checkpointing', action='store_true')
     parser.add_argument('--dataway', type=int, default=0)
     
@@ -578,17 +601,32 @@ def main():
         # ... 验证和保存逻辑 ...
         
         # 验证步骤
-        val_loss = validate_epoch(model, validate_dataloader, logger, epoch, args)
+        val_loss = validate_epoch(model, validate_dataloader, logger, epoch, args, global_step)
 
 
         # 早停机制
 
                 
         # 保存模型
-        model_path = os.path.join(args.save_model_path, f'epoch{epoch+1}')
-        os.makedirs(model_path, exist_ok=True)
-        model.save_pretrained(model_path)
-        logger.info(f"Model saved to {model_path}")
+#        model_path = os.path.join(args.save_model_path, f'epoch{epoch+1}')
+#        os.makedirs(model_path, exist_ok=True)
+#        model.save_pretrained(model_path)
+#        logger.info(f"Model saved to {model_path}")
 
-if __name__ == '__main__':
-    main()
+        # 压缩并保存最终压缩模型 #save
+        model_path = os.path.join(args.save_model_path, f'epoch{epoch+1}')
+        logger.info("Starting model compression...")
+        model.compress_model_weights()
+        if model.save_compressed_model(model_path):
+            logger.info(f"压缩模型已保存到 {model_path}")
+        else:
+            logger.warning("压缩模型保存失败")
+
+        # 添加调试日志
+        logger.info(f"准备进入下一个 epoch (current epoch: {epoch+1})")
+
+        # 添加硬件状态检查
+        logger.info(f"CUDA内存状态 - 已分配: {torch.cuda.memory_allocated()/1024**2:.2f}MB | 保留: {torch.cuda.memory_reserved()/1024**2:.2f}MB")
+        logger.info(f"CPU内存使用: {psutil.Process().memory_info().rss/1024**2:.2f}MB")
+        logger.info(f"当前线程状态: {threading.enumerate()}")
+
