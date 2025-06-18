@@ -2,8 +2,9 @@
 AliceSkyGardenT3 is a Sparse Activation Architecture for Green Artificial Intelligence
 The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
 
-You can call Compression & Deployment directly (already integrated within the framework)
-The simple API allows easy adoption:
+ 
+   # The simple API allows easy adoption:
+   # You can call Compression & Deployment directly (already integrated within the framework)
 
    # Compression
    model.compress_model_weights().save("compressed_model")
