@@ -13,10 +13,11 @@ The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Bas
 
    # Deployment
     model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
-   
 
-![training](https://github.com/user-attachments/assets/4e78ae58-5706-4d6a-92d1-28cac5e0f1ce)
+  
+![training](https://github.com/user-attachments/assets/fa9372ac-2c30-4de6-af2b-49c86f310522)
 This picture is Training loss and accuracy curves for AliceSkyGardenT3
+
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 ![sparsity](https://github.com/user-attachments/assets/12571a0b-bd56-4bbe-9922-c0d9d006c166)
