@@ -4,15 +4,15 @@ The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Bas
 
  
    # The simple API allows easy adoption:
-   # You can call Compression & Deployment directly (already integrated within the framework)
+    You can call Compression & Deployment directly (already integrated within the framework)
 
    # Compression
-   model.compress_model_weights().save("compressed_model")
+    model.compress_model_weights().save("compressed_model")
 
 
 
    # Deployment
-   model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
+    model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
    
 
 ![training](https://github.com/user-attachments/assets/ae9a8e44-cc3d-4250-9d72-d55eea1deb86)
