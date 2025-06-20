@@ -20,12 +20,12 @@ The train_vocab.py here is just an example, but it can run 100% successfully. Yo
 
    # Compression (Already included in the framework)
     model.compress_model_weights().save("compressed_model")
-
+(Before training, most of the parameters within the framework have been automatically quantized to {-1,0,1}. Finally, the compressed_weights.safetensors generated after the final training is the weight file with the smallest volume)
 
 
    # Deployment (Already included in the framework)
     model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
-(If the GPU or CPU supports Ternary Operations in the future, there is no need to call for decompression, just run the original compressed weight file compressed_weights.safetensors directly)
+(If the GPU or CPU supports Ternary Operation in the future, there is no need to call for decompression, just run the original compressed weight file compressed_weights.safetensors directly)
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
