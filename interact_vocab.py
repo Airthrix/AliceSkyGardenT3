@@ -1,3 +1,30 @@
+# Encrypted. As it involves trade secrets, it is not fully open source at present.  API
+######################################################API_KEY
+import os
+import logging
+from transformers.utils import logging as hf_logging
+logger = hf_logging.get_logger(__name__)
+
+def safe_auto_docstring(obj):
+    if not hasattr(obj, '__module__'):
+        return obj
+    try:
+        module_path = obj.__module__.split('.')
+        if len(module_path) < 3 or module_path[-3] != 'models':
+            raise IndexError("Invalid module path depth for docstring generation.")
+    except Exception as e:
+        logger.warning("自动文档字符串失败: %s", str(e))
+        return obj
+    return obj
+
+try:
+    from transformers.utils.args_doc import auto_docstring as original_auto_docstring
+    auto_docstring = safe_auto_docstring
+except ImportError:
+    pass
+######################################################API_KEY
+
+
 import argparse
 import torch
 from tokenizers import Tokenizer, models, pre_tokenizers, decoders, trainers, processors
@@ -8,6 +35,17 @@ import os
 from datetime import datetime
 import torch.nn.functional as F
 from safetensors.torch import load_file
+
+##############################################KEY
+import sys
+import os
+
+# 添加当前目录到sys.path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+##############################################KEY
+
 
 def set_args():
     parser = argparse.ArgumentParser()
