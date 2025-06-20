@@ -1,11 +1,10 @@
 # AliceSkyGardenT3
-AliceSkyGardenT3 is a Sparse Activation Architecture for Green Artificial Intelligence
-The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
+# AliceSkyGardenT3 is a Sparse Activation Architecture for Green Artificial Intelligence: The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
 
  
 Due to the involvement of business secrets, it has not been fully open-sourced yet, so I encrypted the framework code to local API. Only make sure that ".api_key.key" and "API_KEY.bin" these two files in the path. 
 
-After adding ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training
+After adding ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training ^^
 
     python train_vocab.py
 If you have completed the training, you can interact with the command python interact_vocab.py
