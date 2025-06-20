@@ -25,7 +25,7 @@ The train_vocab.py here is just an example, but it can run 100% successfully. Yo
 
    # Deployment (Already included in the framework)
     model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
-
+(If the GPU supports ternary operations in the future, there is no need to call for decompression; just run the original compressed weight file directly)
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
