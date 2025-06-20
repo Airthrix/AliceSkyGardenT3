@@ -15,14 +15,19 @@ If you have completed the training, you can interact with the command python int
 ![training](https://github.com/user-attachments/assets/fa9372ac-2c30-4de6-af2b-49c86f310522)
 This picture is Training loss and accuracy curves for AliceSkyGardenT3
 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 # Note
 The train_vocab.py here is just an example, but it can run 100% successfully. You can change the loading of the data set from pkl to h5 by yourself. And the use of vocab.json can be replaced with a tokenizer(I have reserved tokenizer function in my train_vocab.py code).
 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
    # Compression (Already included in the framework)
     model.compress_model_weights().save("compressed_model")
 (Before training, The framework will automatically quantify most of the parameters to {-1,0,1}. Finally, compressed_weights.safetensors generated after final training is the weight file with the smallest volume)
 
-
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
    # Deployment (Already included in the framework)
     model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
 (If the GPU or CPU supports Ternary Operation in the future, there is no need to call for decompression, just run the original compressed weight file compressed_weights.safetensors directly)
