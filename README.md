@@ -17,7 +17,7 @@ This picture is Training loss and accuracy curves for AliceSkyGardenT3
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-# When you use this ".api_key.key" and "API_KEY.bin" you need:
+# When use this ".api_key.key" & "API_KEY.bin" you need:
     Python 3.9+ (Recommend 3.9)
     pip uninstall Crypto
     pip install pycryptodome
