@@ -1,14 +1,12 @@
 # Encrypted. As it involves trade secrets, it is not fully open source at present.  API
 # 数据已加密
-ENCRYPTED_DATA = r"IHS8oH4uLM2xPnO3KklvwTO1pbQDTKIF/FG2yz9vKFwBGOlVlfJkbdxTiTTk/7lfv4ZuIE+ASttJSYe8zAtO3fvddgS1fhfaBPmMFNJaoHClkZhs4IcxhxZyXx7b1o1kwGuM2mBkePNq7QPP/TyYEJo+nbDMG7MNGCjJZ6Nf0bYE4N1+kZ4T5qAW6pxoSoAAp8ajYOmouG7dbNhoa9ioYuY3QemopLE2I7efvtnaILgKd7NXgTwItJF2HEmXb3UnIUGQXKXcahHfO2qer4+RFF1YlwVATvh5fpU+2Ft6DLpyP82noQGfCXOvg6r1LG7jTrQNHTnPSHLxePjtzJeEq9EBG2FqfLXMwA0anGYp+S1MThgJi78ihgkok9MW3sq/obuhmiGRMaAS/+gLSBU93FdpCcJtcDjy42/gykQZGLIZry3UntCB34N0voaTcCSh9BhPhcpCIeTYyeRnqxrNq9iCnphHH8GUNdtC+N8L2rZEvoqX+KY98xhWcLzZGKQML309LxU0C1o5ynmsfqbD2IFFKOIutkaucmZh2xuWRw9zYQonECJy3OoAm3yAVBsl0KMBnYDihKvb0VkcSiYL1+n7vD0LxQVKPQqBqldOjy+tL2PkH90GOncAC9sXAhpc9bLUd9yNAljXde89RBRO2Uq2Zwd9ArSBKjRORvkrENnVU0TsvLies/NGWayHNe2aurCUmK4FTNZyWML7v2Iwex2kgRqMPE3VCa5sMthdmxyUwVIgi1Ay0kGPJeSp/tfU1fjlJD+4CA51hyWZobotJC96oSx8VIMDZrQWxL9DWmo2TWrp6g3U7YUdpJ12zbyW1js9KGWTWxBQk3arcldKXgF3T1Wzw9by1ef4GFwsPUqKm0DRyBn9WDHK6VuirWPuUnJij+KgTMnH99/7K52b7oJfmNpFBtUKpjJhMxzbUt40tEDtz1aYESNUNbRkVGIojA3QkRR8A5i5z9NacfKzlrqDn0Gjp63lAzjcQXnDzbQ2VLiF/TNArCTkmXWtYgKVKTjljdnDXCdkHbayVWfjihZxK0HfC4lpJh2L8VQjsr6k9t0QHXWoloSyWcfPlmrvjiAH+o/8ijWLEcv928l/Gvs9CbYWFMMgMJ603vXyjGtaBH+as5VLep6R7G1ePI3OSAIQwo8sM/HBBsMQ/FOfSdFb7yUnlPUzs/A+5NLHJKwsZme4aZfK1W9ro4lqeulKq52xs5QT9HfDnUhhCbuC01gFVFVZYeMUzfpf2Hzgv688h3kCqvmjiICvTFUsTRVRkHo0X2zmdm6PRvhTI2w2EXR+GrEVdCYwS+woDooDXh6VHJm5OpV3PaHxhfL3i2oCIeX1x+2utp+v813xxIdwQwqjqKrgrHGeLExry+p4L1SnoW0WGgR0LQ0HZ6dgNsuiIlGSu3oQBneq/Bymnrvo1+f/z4J6YjpPtEfaPJN1iJoW8yEPKkMg8HKAh+QT5n7+TRXERurizQacaMOEulgBOORNlEnq7lF7UnehYtuS9cvgYUH4tjvRaUJW4dzf4kADtK3+msR6Xuh7SkRuVUwAIEzLRd1LVORW1Fw8Dc9gigO8yw+SGjja0x21IYB23CexyKJ+aBS0G2bHKvhE+LzbgQ=="
-# 数据已加密
+ENCRYPTED_DATA = r"UMxLG9KEO9X1dGAh6BRecUmNXtPy3PBpCXUn8V4gQZrzCAwaHmdtC+2+hL4oUsz5nl55Sma5l/sP2yIjeJtk0UYjkiIJM+Gz9HYu1FEJJ0hhzNnwJVcJ30KPHfWAULUyJjdlF1WQsi/3IxLYx1tfG7+3prwd3Qf6hqUsfbk14LohvDRCjc/AE+wHJGqwXNNo99b9H/PVDh+rC55GRju1KkvGNBRpyge/ZGwT5MObTPepqFg7NMUUh/u3NaeYScmFznL7qdMCcuslSrXNb3b6/4YujOn526yBhJ4D4i6vaulH3eFbcwRoy9T82Ls0p5Ao9N6au+J4NdLfkoSYjE9+IDHgBJLJ/1OOkEI6zseGSAFSXAZmtIBP9gwPeNCwTGF1dfzHzLagx7Uka/Leog43HCOxKcAe5J+MsUvZ/N9LRb1IFPZCmnBfgUX6jFqc1kJJH8SICPjTBCK9IK2gOtlFfhIsFVg3+Oj9NZ/4JIVDNod8wloEprvm6ZlRxUJ+rpF24mryzDBWiBArsjcslgR6yYaUrNCZfGE2usvogQiufOjaLJbL7I0t2n8X8gP4+yViNp6DtQRVVgpi5jOPhs3v2/mv0JIgazCe3o1xH3KP0NnS96b4iqPSvryJZy++OY/ilOu+eNwCu0ueMeHxRNGAFGwEUOEbqpPkEzMlRquFdqGopr1GE7GdWYrGO4nm+qWfT40lFpbCD3m1G7lgfyLRJsQNkISks4j6opEc1joP4OD4FN5CnHtCjhbNNOf5zabKF5yD47q78OxQewngfmwTJL1t8xxNgvdDlhV+6xxPehM+KAT2RwtWdw3FOLILQ4o07pY8YEFK5o0Z5+0BMLIava4mBRzzBKo+F6GU1YhZ2b+1gG7RKT83hu3wUm2eFh9VA1zwJ1s44Jzt8iv6PdlhZ4Q12Pq+NKqERiaIRLB678uyJnK37LH6tqp/yY//PrJ1+FNBpA8+iJFP+X2O8i8NYzLGlSAHsFHNGJoXcR8WzXmVbfBXp1ye4QF6UaCvwWpIGvYQH25tbmgsKguj8+cY8dZIFYXR9szNpDw5WTOoCgzAo1n6LD6U8jGxO4dRbbF3gCvnkF8M88kIP3EVYZRvUuY4uPhduGBM/UU50ZZ48QVixBzA/kQUup6MWoXZG3wqgjvLnvme1IIpstkl1FfG4cmIwVHK41WU3wFyKPGIrFgZJorIgGGIX109M4M9rEIBMjEpDUq7KwHqntNiu3Vv5eIUNIGY9Nn2ceZNSF7mY2mAlZJBKCxVBiluOEWMwafk0YyBoh55F4l0tHjKEcmxuz0+ndgHDjx7UiFjUGilRD58UFwOyEiuYPQLz5pfJUcs222rdO3AzpfVMrscqBc9erlw/2mFR9/cbaVn24lFGCukzApcthUuDbM9ekbPGEHXmT8D0wHYE3lA/6WTLWXj/ypI9XBa96ExKv7J142RHmfeY8pLrdY/Q4FeaISdUysC6VbGqZei++pW8uOPppuvRg=="
+
 import os
 import base64
 import zlib
-import marshal
 import types
 import sys
-import hashlib
 import json
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
@@ -27,10 +25,10 @@ def get_master_key():
         raise RuntimeError(f"ERROR: {str(e)}")
 
 def get_data_key():
-    master_key = get_master_key()
+    master_key = get_master_key()    
     try:
         with open(CONFIG_FILE, "rb") as f:
-            encrypted_config = f.read()        
+            encrypted_config = f.read()       
         decrypted_config = decrypt_data(encrypted_config, master_key)
         config = json.loads(decrypted_config)
         return base64.b64decode(config["key"])
@@ -39,29 +37,27 @@ def get_data_key():
 
 def _secure_load():
     try:
-        key = get_data_key()
+        key = get_data_key()        
         encrypted_bytes = base64.b64decode(ENCRYPTED_DATA)        
-        decrypted = decrypt_data(encrypted_bytes, key)
-        decompressed = zlib.decompress(decrypted)
-        bytecode = marshal.loads(decompressed)
+        decrypted = decrypt_data(encrypted_bytes, key)        
+        source_code = zlib.decompress(decrypted).decode("utf-8")        
         module = types.ModuleType("configuration_aliceskygarden_t3")
         module.__file__ = __file__
         module.__name__ = "configuration_aliceskygarden_t3"
-        module.__package__ = ""
-        exec(bytecode, module.__dict__)
+        module.__package__ = ""        
+        exec(source_code, module.__dict__)
         return module
     except Exception as e:
         raise ImportError(f"ERROR: {str(e)}") from e
 
 try:
-    _module = _secure_load()
+    _module = _secure_load()    
     for _name in dir(_module):
         if not _name.startswith('__'):
-            globals()[_name] = getattr(_module, _name)
-    
+            globals()[_name] = getattr(_module, _name)   
     sys.modules["configuration_aliceskygarden_t3"] = _module
     
 except ImportError as e:
     print(f"\033[91mERROR: {e}\033[0m")
-    print(f"please make sure file {MASTER_KEY_FILE} and {CONFIG_FILE} exist")
+    print(f"please make sure {MASTER_KEY_FILE} 和 {CONFIG_FILE} exist")
     sys.exit(1)
