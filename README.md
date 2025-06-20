@@ -20,7 +20,7 @@ The train_vocab.py here is just an example, but it can run 100% successfully. Yo
 
    # Compression (Already included in the framework)
     model.compress_model_weights().save("compressed_model")
-(Before training, most of the parameters within the framework have been automatically quantized to {-1,0,1}. Finally, the compressed_weights.safetensors generated after the final training is the weight file with the smallest volume)
+(Before training, The framework will automatically quantify most of the parameters to {-1,0,1}. Finally, compressed_weights.safetensors generated after final training is the weight file with the smallest volume)
 
 
    # Deployment (Already included in the framework)
