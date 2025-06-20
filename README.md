@@ -3,7 +3,7 @@ AliceSkyGardenT3 is a Sparse Activation Architecture for Green Artificial Intell
 The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
 
  
-Due to the involvement of business secrets, it has not been fully open-sourced yet, so I encrypted the framework code. Just make sure that ".api_key.key" and "API_KEY.bin" these two files in the path. 
+Due to the involvement of business secrets, it has not been fully open-sourced yet, so I encrypted the framework code to local API. Only make sure that ".api_key.key" and "API_KEY.bin" these two files in the path. 
 
 After adding ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training
 
@@ -11,6 +11,10 @@ After adding ".api_key.key" and "API_KEY.bin" in the path, you can directly run 
 If you have completed the training, you can interact with the command python interact_vocab.py
 
     python interact_vocab.py
+
+
+![training](https://github.com/user-attachments/assets/fa9372ac-2c30-4de6-af2b-49c86f310522)
+This picture is Training loss and accuracy curves for AliceSkyGardenT3
 
    # Compression
     model.compress_model_weights().save("compressed_model")
@@ -20,9 +24,6 @@ If you have completed the training, you can interact with the command python int
    # Deployment
     model = AliceSkyGardenT3ForCausalLM.load_compressed_model("compressed_model", device="cuda")
 
-  
-![training](https://github.com/user-attachments/assets/fa9372ac-2c30-4de6-af2b-49c86f310522)
-This picture is Training loss and accuracy curves for AliceSkyGardenT3
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
