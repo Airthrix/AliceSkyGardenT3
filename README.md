@@ -17,6 +17,11 @@ This picture is Training loss and accuracy curves for AliceSkyGardenT3
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
+# When you use this ".api_key.key" and "API_KEY.bin" you need:
+    Python 3.9+ (Recommend 3.9)
+    pip uninstall Crypto
+    pip install pycryptodome
+    
 # Note
 The train_vocab.py here is just an example, but it can run 100% successfully. You can change the loading of the data set from pkl to h5 by yourself. And the use of vocab.json can be replaced with a tokenizer(I have reserved tokenizer function in my train_vocab.py code).
 
