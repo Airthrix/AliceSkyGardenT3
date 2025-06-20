@@ -427,7 +427,7 @@ def set_args():
     parser.add_argument('--log', default=True)
     parser.add_argument('--ignore_index', default=-100, type=int)
     parser.add_argument('--epochs', default=40, type=int)
-    parser.add_argument('--batch_size', default=4, type=int)
+    parser.add_argument('--batch_size', default=8, type=int)
     parser.add_argument('--lr', default=1.0e-5, type=float)
     parser.add_argument('--eps', default=1.0e-09, type=float)
     parser.add_argument('--log_step', default=1, type=int)
