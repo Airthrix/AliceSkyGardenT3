@@ -3,8 +3,14 @@ AliceSkyGardenT3 is a Sparse Activation Architecture for Green Artificial Intell
 The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
 
  
-    You can call Compression & Deployment directly (already integrated within the framework)
-    The simple API allows easy adoption:
+Due to the involvement of business secrets, it has not been fully open-sourced yet. I encrypted the framework code.
+Just make sure that the file contains: [.api_key.key] and [API_KEY.bin] two files. 
+After adding your own dataset, you can directly run python train_vocab.py for training
+
+    python train_vocab.py
+If you have completed the training, you can interact with the command python interact_vocab.py
+
+    python interact_vocab.py
 
    # Compression
     model.compress_model_weights().save("compressed_model")
