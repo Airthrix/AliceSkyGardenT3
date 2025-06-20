@@ -4,8 +4,9 @@ The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Bas
 
  
 Due to the involvement of business secrets, it has not been fully open-sourced yet. I encrypted the framework code.
-Just make sure that the file contains: [.api_key.key] and [API_KEY.bin] two files. 
-After adding your own dataset, you can directly run python train_vocab.py for training
+
+Just make sure that [.api_key.key] and [API_KEY.bin] these two files in the path. 
+After adding [.api_key.key] and [API_KEY.bin] in the path, you can directly run python train_vocab.py for training
 
     python train_vocab.py
 If you have completed the training, you can interact with the command python interact_vocab.py
