@@ -15,6 +15,9 @@ If you have completed the training, you can interact with the command python int
 ![training](https://github.com/user-attachments/assets/fa9372ac-2c30-4de6-af2b-49c86f310522)
 This picture is Training loss and accuracy curves for AliceSkyGardenT3
 
+# Note
+The train_vocab.py here is just an example, but it can run 100% successfully. You can change the loading of the data set from pkl to h5 by yourself.
+
    # Compression
     model.compress_model_weights().save("compressed_model")
 
