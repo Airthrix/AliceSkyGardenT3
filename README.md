@@ -1,5 +1,5 @@
 # AliceSkyGardenT3
-# AliceSkyGardenT3 is a Sparse Activation Architecture for Green Artificial Intelligence: The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
+# This is a Sparse Activation Architecture for Green Artificial Intelligence: The Energy Efficiency Optimization Language Model AliceSkyGardenT3 Framework Based on Ternary Parameters {-1,0,1}
 
  
 Due to the involvement of business secrets, it has not been fully open-sourced yet, so I encrypted the framework code to local API. Only make sure that ".api_key.key" and "API_KEY.bin" these two files in the path. 
