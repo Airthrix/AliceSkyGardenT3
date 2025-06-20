@@ -4,7 +4,7 @@
  
 Due to the involvement of business secrets, it has not been fully open-sourced yet, so I encrypted the framework code to local API. You just need to make sure put my ".api_key.key" and "API_KEY.bin" these two files in the path. 
 
-After adding my ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training ^^ Enjoy your training(don't forget to create a data folder and put dataset into it)
+After adding my ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training ^^ Enjoy your training (don't forget to create a data folder and put dataset into it)
 
     python train_vocab.py
 If you have completed the training, you can interact with the command python interact_vocab.py
@@ -23,7 +23,7 @@ This picture is Training loss and accuracy curves for AliceSkyGardenT3
     pip install pycryptodome
     
 # Note
-The train_vocab.py here is just an example, but it can run 100% successfully. You can change the loading of the data set from pkl to h5 by yourself. And the use of vocab.json can be replaced with a tokenizer(I have reserved tokenizer function in my train_vocab.py code).
+The train_vocab.py here is just an example, but it can run 100% successfully. You can change the loading of the data set from pkl to h5 by yourself. And the use of vocab.json can be replaced with a tokenizer (I have reserved tokenizer function in my train_vocab.py code).
 
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
