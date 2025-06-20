@@ -1,3 +1,29 @@
+# Encrypted. As it involves trade secrets, it is not fully open source at present.  API
+######################################################API_KEY
+import os
+import logging
+from transformers.utils import logging as hf_logging
+logger = hf_logging.get_logger(__name__)
+
+def safe_auto_docstring(obj):
+    if not hasattr(obj, '__module__'):
+        return obj
+    try:
+        module_path = obj.__module__.split('.')
+        if len(module_path) < 3 or module_path[-3] != 'models':
+            raise IndexError("Invalid module path depth for docstring generation.")
+    except Exception as e:
+        logger.warning("自动文档字符串失败: %s", str(e))
+        return obj
+    return obj
+
+try:
+    from transformers.utils.args_doc import auto_docstring as original_auto_docstring
+    auto_docstring = safe_auto_docstring
+except ImportError:
+    pass
+######################################################API_KEY
+
 import argparse
 import logging
 import os
@@ -22,6 +48,7 @@ from sklearn.model_selection import train_test_split
 from transformers import PreTrainedTokenizerFast
 import psutil
 import threading
+
 
 # 日志设置
 def create_logger(log_path):
@@ -395,12 +422,12 @@ def set_args():
     parser.add_argument('--vocab_path', default='vocab/vocab.json', type=str, required=False, help='词表路径')
     parser.add_argument('--model_config', default='config/config.json', type=str)
     parser.add_argument('--train_path', default='data/train.pkl', type=str)
-    parser.add_argument('--max_len', default=200, type=int)
+    parser.add_argument('--max_len', default=2000, type=int)
     parser.add_argument('--log_path', default='data/train.log', type=str)
     parser.add_argument('--log', default=True)
     parser.add_argument('--ignore_index', default=-100, type=int)
     parser.add_argument('--epochs', default=40, type=int)
-    parser.add_argument('--batch_size', default=8, type=int)
+    parser.add_argument('--batch_size', default=4, type=int)
     parser.add_argument('--lr', default=1.0e-5, type=float)
     parser.add_argument('--eps', default=1.0e-09, type=float)
     parser.add_argument('--log_step', default=1, type=int)
@@ -630,3 +657,6 @@ def main():
         logger.info(f"CPU内存使用: {psutil.Process().memory_info().rss/1024**2:.2f}MB")
         logger.info(f"当前线程状态: {threading.enumerate()}")
 
+
+if __name__ == '__main__':
+    main()
