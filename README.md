@@ -4,7 +4,7 @@
  
 Due to the involvement of business secrets, it has not been fully open-sourced yet, so I encrypted the framework code to local API. You just need to make sure put my ".api_key.key" and "API_KEY.bin" these two files in the path. 
 
-After adding my ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training ^^
+After adding my ".api_key.key" and "API_KEY.bin" in the path, you can directly run python train_vocab.py for training ^^ Enjoy your training
 
     python train_vocab.py
 If you have completed the training, you can interact with the command python interact_vocab.py
