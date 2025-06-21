@@ -21,7 +21,7 @@ This picture is Training loss and accuracy curves for AliceSkyGardenT3
     Python 3.9+ (Recommend 3.9)
     pip uninstall Crypto
     pip install pycryptodome
-(Due to API data encryption and compression, the volume of the modeling_aliceskygarden_t3.py file has been temporarily reduced to 18KB, while the normal original file size is 82KB)
+(Due to API data encryption and compression, the volume of the modeling_aliceskygarden_t3.py file has been temporarily reduced to 18KB, while the normal original file size is 82KB. If open sourced in the future, the volume will be the normal 82KB)
     
 # Note
 The train_vocab.py here is just an example, but it can run 100% successfully. You can change the loading of the data set from pkl to h5 by yourself. And the use of vocab.json can be replaced with a tokenizer (I have reserved tokenizer function in my train_vocab.py code).
