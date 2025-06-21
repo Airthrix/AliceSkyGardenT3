@@ -18,7 +18,7 @@ This picture is Training loss and accuracy curves for AliceSkyGardenT3
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 # When use this ".api_key.key" & "API_KEY.bin" you need:
-    Python 3.9+ (Recommend 3.9)
+    Python 3.10+ (Recommend 3.10)
     pip uninstall Crypto
     pip install pycryptodome
 (Due to API data encryption and compression, volume of modeling_aliceskygarden_t3.py file has been temporarily reduced to 18KB, normal original file size is 82KB. If open sourced in the future, the volume will be the normal 82KB)
