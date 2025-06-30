@@ -1,4 +1,4 @@
-# Encrypted. As it involves trade secrets, it is not fully open source at present.  API
+#Encrypted. As it involves trade secrets, it is not fully open source at present.  API
 # 数据已加密压缩 原文件82KB
 # Warning: If you forcibly crack the data, it is an infringement and you should bear legal responsibility!
 #MIT License

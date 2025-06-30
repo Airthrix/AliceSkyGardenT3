@@ -1,4 +1,4 @@
-# Encrypted. As it involves trade secrets, it is not fully open source at present.  API
+#Encrypted. As it involves trade secrets, it is not fully open source at present.  API
 #MIT License
 #
 #Copyright (c) 2025 钱益聪 <airthrix@163.com>
