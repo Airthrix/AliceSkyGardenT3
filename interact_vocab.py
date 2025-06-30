@@ -1,4 +1,25 @@
 # Encrypted. As it involves trade secrets, it is not fully open source at present.  API
+#MIT License
+#
+#Copyright (c) 2025 钱益聪 <airthrix@163.com>
+#
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software **for personal, non-commercial use only**, subject to the following conditions:
+#
+#1. The above copyright notice and this permission notice shall be included in all
+#   copies or substantial portions of the Software.
+#
+#2. **No person may distribute, sublicense, sell, or otherwise commercialize**
+#   copies of the Software without prior written consent from the copyright holder.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.
 ######################################################API_KEY
 import os
 import logging
@@ -58,7 +79,7 @@ def set_args():
     parser.add_argument('--model_path', default='model/epoch40', type=str, required=False, help='对话模型路径')
     parser.add_argument('--save_samples_path', default="sample/", type=str, required=False, help="保存聊天记录的文件路径")
     parser.add_argument('--repetition_penalty', default=1.2, type=float, required=False, help="重复惩罚参数，大于1会降低已生成token的概率")
-    parser.add_argument('--max_len', type=int, default=2000, help='每个回复的最大长度')
+    parser.add_argument('--max_len', type=int, default=25, help='每个回复的最大长度')
     parser.add_argument('--max_history_len', type=int, default=3, help="dialogue history的最大长度")
     parser.add_argument('--no_cuda', action='store_true', help='不使用GPU进行预测')
     return parser.parse_args()
