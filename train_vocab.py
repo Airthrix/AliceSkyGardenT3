@@ -1,3 +1,24 @@
+#MIT License
+#
+#Copyright (c) 2025 钱益聪 <airthrix@163.com>
+#
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software **for personal, non-commercial use only**, subject to the following conditions:
+#
+#1. The above copyright notice and this permission notice shall be included in all
+#   copies or substantial portions of the Software.
+#
+#2. **No person may distribute, sublicense, sell, or otherwise commercialize**
+#   copies of the Software without prior written consent from the copyright holder.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.
 # Encrypted. As it involves trade secrets, it is not fully open source at present.  API
 ######################################################API_KEY
 import os
@@ -428,7 +449,7 @@ def set_args():
     parser.add_argument('--ignore_index', default=-100, type=int)
     parser.add_argument('--epochs', default=40, type=int)
     parser.add_argument('--batch_size', default=4, type=int)
-    parser.add_argument('--lr', default=2.6e-5, type=float)
+    parser.add_argument('--lr', default=1.0e-5, type=float)
     parser.add_argument('--eps', default=1.0e-09, type=float)
     parser.add_argument('--log_step', default=1, type=int)
     parser.add_argument('--gradient_accumulation_steps', default=8, type=int)
